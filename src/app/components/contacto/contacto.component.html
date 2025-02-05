@@ -1,0 +1,39 @@
+<div class="container text-center p-5 border-r">
+  <h1 class="text-success fw-bold mb-4">Contacto</h1>
+  <p class="text-light fs-5">¿Te gustaría trabajar conmigo o hacerme alguna consulta? ¡No dudes en enviarme un mensaje!</p>
+
+  <div class="container w-50 p-3">
+      <div class="mb-3">
+          <input type="text" [(ngModel)]="nombre" #nombreInput="ngModel" class="form-control"
+              placeholder="Tu Nombre" required minlength="3" />
+          <div *ngIf="nombreInput.invalid && nombreInput.touched" class="text-danger">
+              <small *ngIf="nombreInput.errors?.['required']">El nombre es obligatorio.</small>
+              <small *ngIf="nombreInput.errors?.['minlength']">Debe tener al menos 3 letras.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <input type="email" [(ngModel)]="correo" #correoInput="ngModel" class="form-control"
+              placeholder="Tu Correo Electrónico" required email />
+          <div *ngIf="correoInput.invalid && correoInput.touched" class="text-danger">
+              <small *ngIf="correoInput.errors?.['required']">El correo es obligatorio.</small>
+              <small *ngIf="correoInput.errors?.['email']">Ingrese un correo válido.</small>
+          </div>
+      </div>
+
+      <div class="mb-3">
+          <textarea class="form-control" [(ngModel)]="mensaje" #mensajeInput="ngModel" rows="4"
+              placeholder="Tu Mensaje" required></textarea>
+          <div *ngIf="mensajeInput.invalid && mensajeInput.touched" class="text-danger">
+              <small *ngIf="mensajeInput.errors?.['required']">El mensaje es obligatorio.</small>
+          </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+          <button (click)="enviarFormulario()" type="button" class="btn btn-success w-100 p-2 fs-5"
+              [disabled]="!validarFormulario()">Enviar</button>
+      </div>
+
+      <p class="text-light fs-3 fw-bold">{{mensajeEnviado}}</p>
+  </div>
+</div>

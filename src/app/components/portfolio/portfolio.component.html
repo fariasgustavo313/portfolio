@@ -1,0 +1,16 @@
+<div class="container text-center bg-dark p-5 border-r mt-5">
+    <h1 class="text-success fw-bold mb-4">Mi Portfolio</h1>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let portfolio of portfolios">
+          <div class="card h-100 text-bg-dark border-info">
+            <img src="{{portfolio.imagen}}" class="card-img-top" alt="Escuela de Kickboxing">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{portfolio.titulo}}</h5>
+              <p class="card-text">{{portfolio.descripcion}}</p>
+              <a href="{{portfolio.enlace}}" class="btn btn-success mt-auto">Ir a Github</a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
