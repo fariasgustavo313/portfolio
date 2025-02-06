@@ -18,6 +18,10 @@ export class DetalleProyectoComponent implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute, private portfolioService: PortfolioService) {}
 
+  ngAfterViewInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Hace scroll al inicio con animación suave
+  }
+
   ngOnInit(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
