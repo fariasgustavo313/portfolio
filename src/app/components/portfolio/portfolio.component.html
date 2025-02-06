@@ -9,6 +9,7 @@
               <h5 class="card-title">{{portfolio.titulo}}</h5>
               <p class="card-text">{{portfolio.descripcion}}</p>
               <a href="{{portfolio.enlace}}" class="btn btn-success mt-auto">Ir a Github</a>
+              <button class="btn btn-info mt-2" (click)="verDetalleProyecto(portfolio.id)">Ver detalles</button>
             </div>
           </div>
         </div>
