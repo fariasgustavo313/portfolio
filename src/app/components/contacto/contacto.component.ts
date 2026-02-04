@@ -18,16 +18,25 @@ export class ContactoComponent {
   correo: string = "";
   mensaje: string = "";
   mensajeEnviado: string = "";
+  cargando: boolean = false; // Estado para el spinner o bloqueo de botón
 
   validarFormulario(): boolean {
-    return this.nombre.length >= 3 && this.correo.includes("@") && this.mensaje.trim().length > 0;
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    return (
+      this.nombre.length >= 3 && 
+      emailPattern.test(this.correo) && 
+      this.mensaje.trim().length > 0
+    );
   }
 
   enviarFormulario() {
     if (!this.validarFormulario()) {
-      this.mensajeEnviado = "Por favor, complete todos los campos correctamente.";
+      this.mensajeEnviado = ">> ERROR: INVALID_PAYLOAD. Check fields.";
       return;
     }
+
+    this.cargando = true;
+    this.mensajeEnviado = ">> STATUS: SENDING_DATA...";
 
     const templateParams = {
       nombre: this.nombre,
@@ -35,16 +44,20 @@ export class ContactoComponent {
       mensaje: this.mensaje
     };
 
-    EmailJS.send("service_5r6h9lq", "template_jstu0df", templateParams, "4HYSAai-AsnyyUxoZ")
+    // Usando tus credenciales actuales
+    EmailJS.send("service_5r6h9lq", "template_0zhf1rv", templateParams, "4HYSAai-AsnyyUxoZ")
       .then((response) => {
-        this.mensajeEnviado = "¡Mensaje enviado con éxito!";
+        this.mensajeEnviado = ">> SUCCESS: CONNECTION_ESTABLISHED. Message sent.";
         this.nombre = "";
         this.correo = "";
         this.mensaje = "";
       })
       .catch((error) => {
-        this.mensajeEnviado = "Ocurrió un error al enviar el mensaje. Intente nuevamente.";
+        console.error("EmailJS Error:", error);
+        this.mensajeEnviado = ">> ERROR: UPLINK_FAILED. Try again later.";
+      })
+      .finally(() => {
+        this.cargando = false;
       });
   }
-
 };

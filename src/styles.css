@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;500&family=Space+Grotesk:wght@300;700&display=swap');
+
+:root {
+  --neon: #00ff88;
+  --bg: #050505;
+  --surface: #0f0f0f;
+  --text: #e0e0e0;
+  --border: rgba(0, 255, 136, 0.2);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Efecto de Scanline sutil */
+body::before {
+  content: " ";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.code-font { font-family: 'Fira Code', monospace; }
+
+/* Tarjetas Estilo Terminal */
+.terminal-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.terminal-card:hover {
+  border-color: var(--neon);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+}
+
+/* Botones Neon */
+.btn-cyber {
+  background: transparent;
+  color: var(--neon);
+  border: 1px solid var(--neon);
+  font-family: 'Fira Code', monospace;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.btn-cyber:hover {
+  background: var(--neon);
+  color: var(--bg);
+  box-shadow: 0 0 15px var(--neon);
+}
+
+/* Cambiamos el gris tenue por un blanco hueso mucho más legible */
+.text-muted {
+  color: #b0b0b0 !important; /* Gris claro, no oscuro */
+}
+
+/* Para los textos pequeños o secundarios en las tarjetas */
+.code-font.text-muted {
+  color: var(--neon) !important;
+  opacity: 0.8;
+}
+
+/* Forzar que el texto light sea blanco puro */
+.text-light {
+  color: #ffffff !important;
+}
+
+/* Mejora de contraste en los inputs */
+.terminal-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Iconos que estaban muy oscuros */
+.icon-gray {
+  color: #888 !important; /* Más claro que antes */
+}

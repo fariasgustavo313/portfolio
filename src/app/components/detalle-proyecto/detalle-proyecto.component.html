@@ -1,52 +1,39 @@
-<div class="container d-flex align-items-center justify-content-center vh-100 mt-5 pb-5">
-    <div class="row w-75 p-4 shadow-lg rounded bg-dark">
-      <!-- Columna izquierda: Imagen y tecnologías -->
-      <div class="col-md-4 text-center">
-        <img *ngIf="proyecto?.imagen" [src]="proyecto?.imagen" alt="{{ proyecto?.titulo }}" class="img-fluid rounded shadow">
-  
-        <div class="mt-4">
-          <h4 class="fw-bold text-success">Tecnologías</h4>
-          <ul class="list-unstyled">
-            <li *ngFor="let tech of proyecto?.tecnologias" class="text-light">{{ tech }}</li>
-          </ul>
-        </div>
-  
-        <div class="mt-4">
-          <h4 class="fw-bold text-success">Metodología</h4>
-          <p class="text-light">{{proyecto?.metodologia}}</p>
+<div class="container py-5 mt-5" *ngIf="proyecto">
+  <div class="terminal-card p-4 p-md-5">
+    <div class="row">
+      <div class="col-lg-4 text-center mb-4">
+        <img [src]="proyecto.imagen" class="img-fluid rounded border border-success mb-4 shadow-lg">
+        <h5 class="code-font text-success">TECH_SPEC</h5>
+        <div class="d-flex flex-wrap justify-content-center gap-2">
+          <span *ngFor="let t of proyecto.tecnologias" class="badge bg-dark border border-secondary text-white">{{t}}</span>
         </div>
       </div>
-  
-      <!-- Columna derecha: Información del proyecto -->
-      <div class="col-md-8">
-        <h1 class="mb-3 fw-bold text-success">{{ proyecto?.titulo }}</h1>
-  
-        <div *ngIf="proyecto?.descripcion" class="mb-3">
-          <h4 class="fw-bold text-success">Descripción</h4>
-          <p class="text-light">{{ proyecto?.descripcion }}</p>
+      
+      <div class="col-lg-8">
+        <h1 class="display-5 fw-bold text-white mb-0">{{proyecto.titulo}}</h1>
+        <p class="code-font text-success mb-4">Project_Status: STABLE</p>
+
+        <div class="mb-4">
+          <h5 class="text-success fw-bold">// DESCRIPTION</h5>
+          <p class="text-light">{{proyecto.descripcion}}</p>
         </div>
-  
-        <div *ngIf="proyecto?.trabajo" class="mb-3">
-          <h4 class="fw-bold text-success">Trabajo</h4>
-          <p class="text-light">{{ proyecto?.trabajo }}</p>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <h6 class="text-success fw-bold">// CHALLENGES</h6>
+            <p class="small text-muted">{{proyecto.retos}}</p>
+          </div>
+          <div class="col-md-6 mb-3">
+            <h6 class="text-success fw-bold">// LEARNINGS</h6>
+            <p class="small text-muted">{{proyecto.aprendizaje}}</p>
+          </div>
         </div>
-  
-        <div *ngIf="proyecto?.retos" class="mb-3">
-          <h4 class="fw-bold text-success">Retos</h4>
-          <p class="text-light">{{ proyecto?.retos }}</p>
-        </div>
-  
-        <div *ngIf="proyecto?.aprendizaje" class="mb-3">
-          <h4 class="fw-bold text-success">Aprendizajes</h4>
-          <p class="text-light">{{ proyecto?.aprendizaje }}</p>
-        </div>
-  
-        <!-- Botones -->
-        <div class="mt-4">
-          <a *ngIf="proyecto?.enlace" [href]="proyecto?.enlace" class="btn btn-primary me-2" target="_blank">Ver en GitHub</a>
-          <button onclick="window.history.back()" class="btn btn-secondary">Volver</button>
+
+        <div class="mt-4 pt-4 border-top border-secondary d-flex gap-3">
+          <a [href]="proyecto.enlace" target="_blank" class="btn-cyber">SOURCE_CODE</a>
+          <button onclick="window.history.back()" class="btn btn-outline-secondary">RETURN_TO_DASHBOARD</button>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

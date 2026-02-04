@@ -1,11 +1,17 @@
-<!-- Sección de Tecnologías -->
-<section class="container text-center mt-5">
-  <h1 class="text-success fw-bold mb-5">Tecnologías</h1>
-
-  <div class="row justify-content-center">
-      <div class="col-4 col-md-2 mb-4" *ngFor="let tecnologia of tecnologias">
-          <i class="{{tecnologia.logo}}"></i>
-          <p class="text-white mt-2">{{tecnologia.titulo}}</p>
+<section class="container py-5">
+  <h3 class="code-font text-success mb-5">// TECH_STASH</h3>
+  <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6 g-3">
+    <div class="col" *ngFor="let tec of tecnologias">
+      <div class="terminal-card text-center p-3 tec-box">
+        <i [class]="tec.logo" class="display-5 d-block mb-2 icon-gray"></i>
+        <span class="code-font small">{{tec.titulo}}</span>
       </div>
+    </div>
   </div>
 </section>
+
+<style>
+.icon-gray { color: #444; transition: 0.3s; }
+.tec-box:hover .icon-gray { color: var(--neon); filter: drop-shadow(0 0 8px var(--neon)); }
+.tec-box:hover span { color: white; }
+</style>

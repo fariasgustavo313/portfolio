@@ -1,39 +1,44 @@
-<div class="container text-center p-5 border-r">
-  <h1 class="text-success fw-bold mb-4">Contacto</h1>
-  <p class="text-light fs-5">¿Te gustaría trabajar conmigo o hacerme alguna consulta? ¡No dudes en enviarme un mensaje!</p>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="terminal-card p-4 shadow-lg">
+        <h3 class="code-font text-success mb-4">// ESTABLISH_CONNECTION</h3>
+        
+        <div class="mb-3">
+          <label class="code-font small text-success">SENDER_ID:</label>
+          <input type="text" [(ngModel)]="nombre" name="nombre"
+                 class="terminal-input" placeholder="Your Name" 
+                 [disabled]="cargando">
+        </div>
 
-  <div class="container w-50 p-3">
-      <div class="mb-3">
-          <input type="text" [(ngModel)]="nombre" #nombreInput="ngModel" class="form-control"
-              placeholder="Tu Nombre" required minlength="3" />
-          <div *ngIf="nombreInput.invalid && nombreInput.touched" class="text-danger">
-              <small *ngIf="nombreInput.errors?.['required']">El nombre es obligatorio.</small>
-              <small *ngIf="nombreInput.errors?.['minlength']">Debe tener al menos 3 letras.</small>
-          </div>
+        <div class="mb-3">
+          <label class="code-font small text-success">RETURN_PATH:</label>
+          <input type="email" [(ngModel)]="correo" name="correo"
+                 class="terminal-input" placeholder="your@email.com"
+                 [disabled]="cargando">
+        </div>
+
+        <div class="mb-4">
+          <label class="code-font small text-success">MESSAGE_BODY:</label>
+          <textarea [(ngModel)]="mensaje" name="mensaje"
+                    class="terminal-input" rows="4" placeholder="Write your message..."
+                    [disabled]="cargando"></textarea>
+        </div>
+
+        <button (click)="enviarFormulario()" 
+                [disabled]="!validarFormulario() || cargando" 
+                class="btn-cyber w-100 py-3">
+          <span *ngIf="!cargando">EXECUTE_SEND</span>
+          <span *ngIf="cargando" class="spinner-border spinner-border-sm"></span>
+          <span *ngIf="cargando" class="ms-2">PROCESSING...</span>
+        </button>
+
+        <div class="mt-4 p-2 bg-black border border-secondary" *ngIf="mensajeEnviado">
+          <p class="code-font mb-0" [ngClass]="{'text-success': !mensajeEnviado.includes('ERROR'), 'text-danger': mensajeEnviado.includes('ERROR')}">
+            {{ mensajeEnviado }}
+          </p>
+        </div>
       </div>
-
-      <div class="mb-3">
-          <input type="email" [(ngModel)]="correo" #correoInput="ngModel" class="form-control"
-              placeholder="Tu Correo Electrónico" required email />
-          <div *ngIf="correoInput.invalid && correoInput.touched" class="text-danger">
-              <small *ngIf="correoInput.errors?.['required']">El correo es obligatorio.</small>
-              <small *ngIf="correoInput.errors?.['email']">Ingrese un correo válido.</small>
-          </div>
-      </div>
-
-      <div class="mb-3">
-          <textarea class="form-control" [(ngModel)]="mensaje" #mensajeInput="ngModel" rows="4"
-              placeholder="Tu Mensaje" required></textarea>
-          <div *ngIf="mensajeInput.invalid && mensajeInput.touched" class="text-danger">
-              <small *ngIf="mensajeInput.errors?.['required']">El mensaje es obligatorio.</small>
-          </div>
-      </div>
-
-      <div class="d-flex justify-content-center">
-          <button (click)="enviarFormulario()" type="button" class="btn btn-success w-100 p-2 fs-5"
-              [disabled]="!validarFormulario()">Enviar</button>
-      </div>
-
-      <p class="text-light fs-3 fw-bold">{{mensajeEnviado}}</p>
+    </div>
   </div>
 </div>
