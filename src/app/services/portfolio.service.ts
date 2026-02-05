@@ -45,6 +45,18 @@ export class PortfolioService {
       retos: "Configurar correctamente la comunicación entre microservicios, implementar balanceo de carga y manejar la tolerancia a fallos para garantizar la disponibilidad del sistema.",
       aprendizaje: "Uso avanzado de Spring Cloud para la gestión de microservicios, implementación de API Gateway para centralizar peticiones y configuración de circuit breakers con Resilience4j.",
       metodologia: "Scrum"
+    },
+    {
+      id: 6,
+      imagen: "../../../../sentinel-project.png",
+      titulo: "Sentinel: Sistema de Resiliencia y Autosanación",
+      descripcion: "Plataforma de monitoreo activo para contenedores Docker que detecta caídas de servicios y los recupera automáticamente, notificando en tiempo real a través de un Dashboard y alertas de Slack.",
+      enlace: "https://github.com/fariasgustavo313/sentinel-project",
+      tecnologias: ["Java 17", "Spring Boot", "Docker API", "WebSockets", "Slack API", "Tailwind CSS", "Vanilla JS"],
+      trabajo: "Individual",
+      retos: "Lograr la comunicación bidireccional en tiempo real entre el servidor y la interfaz mediante WebSockets y garantizar que la lógica de autosanación no entre en bucles infinitos al intentar levantar contenedores con errores críticos.",
+      aprendizaje: "Gestión avanzada de la API de Docker mediante Java, implementación de streaming de datos con STOMP/SockJS y diseño de interfaces reactivas livianas sin necesidad de frameworks pesados de frontend.",
+      metodologia: "Agile / Personal Research"
     }
   ];
 
